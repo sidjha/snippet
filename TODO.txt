@@ -1,0 +1,7 @@
+- Persist new users
+- Check for valid signup inputs
+
+- Login functionality
+
+- Frame Snippet question
+- Upload image and text functionality
