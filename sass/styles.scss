@@ -29,6 +29,9 @@ h2 {
 
 	color: #000;
 	text-decoration: none;
+
+	border-radius: 0;
+
 }
 
 .btn_login {
@@ -51,4 +54,39 @@ h2 {
 
 .masthead {
 	padding-top: 20%;
+}
+
+.signup_form {
+	width: 95%;
+	margin: 0 auto;
+	text-align: center;
+
+	padding: 20px;
+	.fields {
+		input {
+			display: block;
+			margin: 5% auto;
+		}
+
+		input[type="email"] {
+			width: 70%;
+			height: 20px;
+		}
+
+		input[type="password"] {
+			width: 70%;
+			height: 20px;
+		}
+
+		input[type="submit"] {
+			border-radius: 0;
+			padding: 10px;
+		}
+	}
+}
+
+footer {
+	color: #717171;
+	font-size: 0.7em;
+	padding: 10px;
 }

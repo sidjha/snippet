@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, session, json, url_for
 import os
 import mixpanel
 
@@ -21,6 +21,29 @@ def index():
 	else:
 		return render_template('landing.html')
 		# ANALYTICS TODO: trigger homepage visit
+
+@app.route('/signup')
+def signup():
+	if active_session() == True:
+		return render_template('logged_in.html')
+		# ANALYTICS TODO: trigger reloaded dashboard
+	else:
+		return render_template('signup.html')
+		# ANALYTICS TODO: trigger homepage visit
+
+@app.route('/signup_submit', methods=['POST'])
+def signup_submit():
+	if request.method == 'POST':
+		email = request.form['email']
+		password = request.form['password']
+		print email, password
+
+		# TODO: check email, password validity
+		# TODO: add new user to db and session
+		return redirect(url_for('index'))
+	else:
+		return "Bad call"
+
 
 def active_session():
 	if 'email' in session:
