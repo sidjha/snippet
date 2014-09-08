@@ -3,6 +3,9 @@ body {
   padding: 0;
   font-family: Helvetica, sans-serif; }
 
+.hue {
+  background: #9df598; }
+
 .container {
   width: 95%;
   margin: 0 auto;
@@ -59,7 +62,43 @@ h2 {
     border-radius: 0;
     padding: 10px; }
 
+.snippet {
+  margin: 0 auto;
+  width: 95%; }
+  .snippet h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1em; }
+  .snippet .media {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px; }
+    .snippet .media .static_img {
+      width: 200px;
+      height: 200px;
+      border: 10px solid #fff; }
+  .snippet .msg {
+    margin: 40px auto;
+    text-align: center; }
+    .snippet .msg textarea {
+      border: none;
+      padding: 2%;
+      width: 100%;
+      text-align: left;
+      border-radius: 0;
+      background: none;
+      font-family: Courier, sans-serif;
+      font-size: 0.6em; }
+  .snippet .publish {
+    text-align: center; }
+    .snippet .publish .btn_publish {
+      width: 400px; }
+  .snippet #fileinput {
+    position: absolute;
+    top: -9999px; }
+
 footer {
   color: #717171;
-  font-size: 0.7em;
-  padding: 10px; }
+  font-size: 0.4em;
+  padding: 10px;
+  margin-top: 40px; }

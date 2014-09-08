@@ -18,7 +18,7 @@
 
 <body>
 	
-	<form class="signup_form" id="signup_form" action="/signup_submit" method="post">
+	<form class="signup_form" id="signup_form">
 		Sign up for Snippet
 		<div class="fields">
 			<input type="email" placeholder="email address" id="email" name="email">
@@ -33,10 +33,43 @@
 </body>
 
 <script>
-	$('#signup_form').submit(function(ev) {
+	$("#signup_form").submit(function(ev) {
+		ev.preventDefault();
 		mixpanel.track("Sign up form submitted", {
-			"email": $('#email').val()
+			"email": $("#email").val()
 		});
+		post_signup_data();
 	});
+
+	function post_signup_data() {
+		var email = $("#email").val();
+		var password = $("#password").val();
+		$.ajax({
+			type: "POST",
+			url: "/signup_submit",
+			data: {
+				email: email,
+				password: password
+			},
+
+			success: function(data) {
+				if (data.success == 1) {
+					var user = data.user;
+					mixpanel.identify("1");
+					mixpanel.people.set({
+						"$email": user.email,
+						"$created": new Date()
+					});
+					window.location.replace("/");
+				} else {
+					console.log(data.email);
+					console.log(data.success);
+				}
+			},
+
+			dataType: "json"
+		});
+	}
+	
 </script>
 </html>

@@ -2,26 +2,72 @@
 
 <html>
 <head>
-	<title>Your name — Snippet</title>
+	<title>{{user}} — Snippet</title>
 
-	<link rel="stylesheet" href="/static/styles.css">
+	<link rel="stylesheet" href="/static/css/styles.css">
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 </head>
 
-<body>
+<body class="hue">
 	<div class="snippet">
+		<h2>Update your Clipp</h2>
 		<div class="media">
-
+			<input type="file" id="fileinput" accept="image/*;capture=camera">
+			<img src="http://placehold.it/400x400" class="static_img" id="static_img">
 		</div>
 		<div class="msg">
-			<textarea>What defines you right now?</textarea>
+			<textarea height="3" spellcheck="false" autocorrect=0 placeholder="What are you feeling right now?"></textarea>
+		</div>
+		<div class="publish">
+			<a href="#" class="btn btn_publish">Publish</a>
 		</div>
 	</div>
 
-	<footer>
-		&copy; 2014 Snippet. A Mesh8 Inc product.
-	</footer>
+
 </body>
+
+<script>
+
+	$("#static_img").on("click touchstart", function(ev) {
+		$("#fileinput").trigger("click");
+	});
+
+	$("#fileinput").on("change", handle_media_upload);
+
+	function handle_media_upload(ev) {
+		var file = ev.target.files[0];
+
+
+		var reader = new FileReader();
+
+		reader.onload = (function(the_file) {
+			return function(e) {
+				$('#static_img').attr('src', e.target.result);
+				send_to_server(e.target.result);
+			};
+		})(file);
+
+		reader.readAsDataURL(file);
+
+	}
+
+	function send_to_server(media) {
+		$.ajax({
+			type: "POST",
+			url: "/post_media",
+			data: {
+				media: media
+			},
+			success: function(data) {
+				console.log(data.url);
+			},
+
+			dataType: "json"
+		});
+	}
+
+</script>
 
 </html>

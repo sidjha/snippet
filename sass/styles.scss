@@ -8,6 +8,10 @@ body {
 	font-family: $main_font;
 }
 
+.hue {
+	background: rgb(157, 245, 152);
+}
+
 .container {
 	width: 95%;
 	margin: 0 auto;
@@ -85,8 +89,65 @@ h2 {
 	}
 }
 
+.snippet {
+	margin: 0 auto;
+	width: 95%;
+
+	h2 {
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 1em;
+	}
+
+	.media {
+		margin: 0 auto;
+		width: 200px;
+		height: 200px;
+
+		.static_img {
+			width: 200px;
+			height: 200px;
+			border: 10px solid #fff;
+		}
+	}
+
+	.msg {
+		margin: 40px auto;
+		text-align: center;
+		textarea {
+			border: none;
+			padding: 2%;
+			width: 100%;
+			text-align: left;
+			border-radius: 0;
+
+			background: none;
+			font-family: Courier, sans-serif;
+			font-size: 0.6em;
+		}
+		
+	}
+
+	.publish {
+		text-align: center;
+
+		.btn_publish {
+			width: 400px;
+		}
+	}
+
+	#fileinput {
+		position: absolute;
+		top: -9999px;
+	}
+	
+}
+
+
+
 footer {
 	color: #717171;
-	font-size: 0.7em;
+	font-size: 0.4em;
 	padding: 10px;
+	margin-top: 40px;
 }

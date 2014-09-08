@@ -20,8 +20,8 @@
 <body>
 	<div class="container">
 		<div class="masthead">
-			<h1>Snippet</h1>
-			<h2>Question goes here?</h2>
+			<h1>Clipps</h1>
+			<h2>What do you wanna say right now?</h2>
 		</div>
 
 		<div class="start">
@@ -32,6 +32,9 @@
 </body>
 
 <script>
+
+	mixpanel.track("Landing page hit");
+
 	$('#login_btn').on("click touchstart", function() {
 		mixpanel.track("Login button pressed");
 	});
